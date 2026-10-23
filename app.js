@@ -1,0 +1,11 @@
+const lb=document.getElementById('lb'),li=lb.querySelector('img'),lc=lb.querySelector('p');
+document.querySelectorAll('.it').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();li.src=a.href;lc.textContent=li.alt=a.querySelector('img').alt;lb.hidden=false}));
+lb.addEventListener('click',e=>{if(e.target!==li)lb.hidden=true});document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.hidden=true});
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
+document.querySelectorAll('.it').forEach(i=>i.classList.toggle('hide',b.dataset.f!=='all'&&i.dataset.c!==b.dataset.f))}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const f=document.getElementById('lead'),m=document.getElementById('msg');
+f.addEventListener('submit',async e=>{e.preventDefault();m.textContent='שולח...';
+try{const r=await fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)});
+if(!r.ok)throw 0;m.textContent='תודה! הפרטים התקבלו, אחזור אליך בהקדם.';f.reset()}catch(_){m.textContent='משהו השתבש. אפשר לפנות ישירות בוואטסאפ או בטלפון 054-9724250.'}});
