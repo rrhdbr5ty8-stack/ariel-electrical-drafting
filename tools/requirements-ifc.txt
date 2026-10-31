@@ -1,0 +1,5 @@
+# Local IFC → Job OS ingest only. No Autodesk APS, no license server, no paid APIs.
+#   python3 -m pip install -r tools/requirements-ifc.txt
+ifcopenshell>=0.7,<0.9
+ezdxf>=1.1,<2
+PyYAML>=6,<7

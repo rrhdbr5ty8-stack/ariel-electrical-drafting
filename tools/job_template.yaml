@@ -1,0 +1,49 @@
+# job.yaml – Job OS (כל השדות אופציונליים; ברירות מחדל ב-tools/run_pipeline.py)
+job:
+  project: ""            # שם פרויקט
+  client: ""
+  address: ""
+  date: ""               # 26/10/2026
+  status: "לאישור המזמין"
+  revisions:
+    - ["0", "", "הגשה ראשונה", "א. מושנה"]
+input:
+  type: auto             # auto | cad | pdf | sketch   (auto = לפי סיומת ב-inputs/; אם כמה: CAD>PDF>סקיצה)
+  file: null             # למשל inputs/plan.pdf – גובר על auto
+  page: 0                # עמוד ב-PDF (מ-0)
+  cad_base: null         # CAD: נקודת מקור במקור שתנחת על 0,0 (null = פינת extents)
+  skip_layers: ["A-FURN", "A-ANNO-TEXT"]   # CAD בלבד
+  calibration:           # PDF/סקיצה בלבד. אחת משתי שיטות:
+    width_m: null        #  (1) רוחב כל התמונה/העמוד במטרים
+    p1_px: null          #  (2) שתי נקודות בפיקסלים [x,y] + המרחק ביניהן במטרים
+    p2_px: null
+    dist_m: null         #  בלי כיול -> 10 מ' ברירת מחדל + אזהרה ב-out/pipeline_report.json
+sheet:
+  size: A3               # A4/A3/A2/A1/A0
+  scale: 50
+  plan_title: "תוכנית העמדה – חשמל"
+  plan_subtitle: ""
+  plan_dwg_no: E-01
+  sld_title: "סכמה חד-קווית"
+  sld_subtitle: ""
+  sld_dwg_no: E-02
+  extra_pdf: [A4]
+rooms: []                # [{x: 230, y: 150, name: "סלון", area: 24.3}]  (ס"מ)
+notes_plan:
+  - "1. גבהי התקנה (h) בס\"מ מפני ריצוף גמור. מספר ליד אביזר = מס' מעגל (ראה E-02)."
+notes_sld:
+  - "1. כל המעגלים מוגנים בממסר פחת 30mA."
+output:
+  zip: deliverables.zip
+
+# Job OS C – מחולל חד-קווי (אופציונלי; בלי הסעיף = התנהגות קודמת)
+#sld:
+#  preset: residential   # residential | office
+#  suggest: true
+#  force_suggest: false
+#  size: A3
+# ---- D: סימון כמויות + כתב כמויות (tools/run_boq.py) – אופציונלי ----
+# boq:
+#   enabled_chapters: ["08", "15", "18", "34"]
+#   mifrat: {DATA: "18-5.3", SMOKE: "34#21"}
+#   chapters: {TV: "18"}
