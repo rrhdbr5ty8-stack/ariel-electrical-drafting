@@ -61,3 +61,48 @@ footer{background:#071535;color:#aeb8d4;text-align:center;padding:28px 0 90px;fo
 @media(min-width:760px){nav a:not(.btn){display:inline}.hero{padding:96px 0 110px}.hero h1{font-size:3.8rem}.hgrid{grid-template-columns:1.1fr .9fr}.hart{display:block;height:380px}
 .cards{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(5,1fr)}.gal{grid-template-columns:repeat(4,1fr)}.two{grid-template-columns:1fr 1fr}h2{font-size:2.4rem}}
 .it[data-c=media] img{object-position:center 35%}
+
+/* Floating lead-agent widget (right side; WhatsApp stays on the left) */
+.am-chat{position:relative;z-index:40}
+.am-chat-toggle{
+  position:fixed;bottom:20px;right:20px;z-index:41;
+  display:flex;align-items:center;gap:10px;
+  background:var(--n);color:#fff;border:0;border-radius:999px;
+  padding:10px 16px 10px 12px;cursor:pointer;font:inherit;font-weight:800;
+  box-shadow:0 10px 24px #0b1f4a55;transition:transform .2s,box-shadow .2s;
+}
+.am-chat-toggle:hover{transform:translateY(-2px);box-shadow:0 14px 28px #0b1f4a66}
+.am-chat-toggle .am-ico{
+  width:42px;height:42px;border-radius:50%;background:var(--g);color:var(--n);
+  display:grid;place-items:center;flex:0 0 auto;
+}
+.am-chat-toggle .am-ico svg{display:block}
+.am-chat-toggle .am-label{line-height:1.2;text-align:right}
+.am-chat-toggle .am-label b{display:block;font-size:.95rem}
+.am-chat-toggle .am-label span{display:block;font-size:.75rem;font-weight:600;opacity:.8}
+.am-chat.is-open .am-chat-toggle .am-open{display:none}
+.am-chat:not(.is-open) .am-chat-toggle .am-close-ico{display:none}
+.am-chat-panel{
+  position:fixed;bottom:92px;right:20px;z-index:42;
+  width:min(400px,calc(100vw - 24px));height:min(640px,calc(100vh - 130px));
+  background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 24px 60px #0b1f4a4d;border:1px solid #d9deeb;
+  display:flex;flex-direction:column;
+}
+.am-chat-panel[hidden]{display:none}
+.am-chat-head{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:10px 12px;background:var(--n);color:#fff;
+  border-bottom:3px solid var(--g);font-weight:800;font-size:.92rem;
+}
+.am-chat-close{
+  appearance:none;border:0;background:transparent;color:#fff;font-size:1.4rem;
+  line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px;
+}
+.am-chat-close:hover{background:#ffffff22}
+.am-chat-panel iframe{flex:1;width:100%;border:0;background:#eef1f8;min-height:0}
+@media(max-width:640px){
+  .am-chat-toggle .am-label{display:none}
+  .am-chat-toggle{padding:8px;border-radius:50%}
+  .am-chat-panel{right:12px;left:12px;width:auto;bottom:88px;height:min(72vh,640px)}
+}
